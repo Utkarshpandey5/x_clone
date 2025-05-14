@@ -2,8 +2,10 @@ import Notification from "../models/notification.model.js";
 import Post from "../models/post.model.js";
 import User from "../models/user.model.js";
 import { v2 as cloudinary } from "cloudinary";
+import profanity from "profanity-hindi";
 
 export const createPost = async (req, res) => {
+
 	try {
 		const { text } = req.body;
 		let { img } = req.body;
@@ -20,7 +22,10 @@ export const createPost = async (req, res) => {
 			const uploadedResponse = await cloudinary.uploader.upload(img);
 			img = uploadedResponse.secure_url;
 		}
-
+		if (text && profanity.isMessageDirty(text)) {
+  			return res.status(400).json({ error: "BAD Words are not allowed in posts." });
+		}		
+		
 		const newPost = new Post({
 			user: userId,
 			text,

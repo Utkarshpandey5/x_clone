@@ -11,6 +11,7 @@ import RightPanel from "./components/common/RightPanel";
 import { Toaster } from "react-hot-toast";
 import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "./components/common/LoadingSpinner";
+import AiChat from "./components/common/AiChat";
 
 function App() {
 	const {data: authUser, isLoading} = useQuery({
@@ -48,6 +49,7 @@ function App() {
 			</Routes>
 			{authUser && <RightPanel/>}
 			<Toaster/>
+			
 		</div>
 	);
 }

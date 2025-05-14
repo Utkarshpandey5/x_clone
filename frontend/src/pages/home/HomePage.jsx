@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import Posts from "../../components/common/Posts";
 import CreatePost from "./CreatePost";
+import AiChat from "../../components/common/AiChat";
 
 const HomePage = () => {
 	document.title = "X / Home";
@@ -40,6 +41,7 @@ const HomePage = () => {
 
 				{/* POSTS */}
 				<Posts feedType={feedType} />
+				<AiChat/>
 			</div>
 		</>
 	);
